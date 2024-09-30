@@ -10,7 +10,7 @@ workflows:
         bundle_identifier: com.LofeHubCafe
       vars:
         BUNDLE_ID: "com.LofeHubCafe"
-        XCODE_WORKSPACE: "PLofeHubCafe.xcworkspace" # <-- Put the name of your Xcode workspace here
+        XCODE_WORKSPACE: "LofeHubCafe.xcworkspace" # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "LofeHubCafe" # <-- Put the name of your Xcode scheme here
         APP_STORE_APPLE_ID: 6733241993
       xcode: 15.3
