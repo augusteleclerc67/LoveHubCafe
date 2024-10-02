@@ -38,6 +38,8 @@ struct AuthView: View {
                             .foregroundColor(.white)
                         
                         TextField("", text: $email, prompt: Text("E-mail").foregroundColor(.black.opacity(0.6)))
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.never)
                             .padding()
                             .padding(.vertical, 5)
                             .foregroundColor(.black)
@@ -51,6 +53,8 @@ struct AuthView: View {
                             .padding(.top, 20)
                         
                         SecureField("", text: $password, prompt: Text("Password").foregroundColor(.black.opacity(0.6)))
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.never)
                             .padding()
                             .padding(.vertical, 5)
                             .foregroundColor(.black)

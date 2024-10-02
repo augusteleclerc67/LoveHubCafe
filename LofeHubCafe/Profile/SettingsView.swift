@@ -14,6 +14,8 @@ struct SettingsView: View {
     
     @State private var showingMailWithError = false
     @State private var showingMailWithSuggestion = false
+    @State private var isDeleteAlertShown = false
+    @State private var isAlertShown = false
     
     var body: some View {
         ZStack {
@@ -47,6 +49,7 @@ struct SettingsView: View {
                         if MFMailComposeViewController.canSendMail() {
                             showingMailWithError.toggle()
                         } else {
+                            isAlertShown.toggle()
                         }
                     } label: {
                         Text("Report a bug")
@@ -73,6 +76,7 @@ struct SettingsView: View {
                         if MFMailComposeViewController.canSendMail() {
                             showingMailWithSuggestion.toggle()
                         } else {
+                            isAlertShown.toggle()
                         }
                     } label: {
                         Text("Suggest improvement")
@@ -134,7 +138,7 @@ struct SettingsView: View {
                     
                     if authViewModel.currentuser != nil {
                         Button {
-                            
+                            isDeleteAlertShown.toggle()
                         } label: {
                             Text("Delete Account")
                                 .foregroundStyle(.red)
@@ -147,6 +151,39 @@ struct SettingsView: View {
             }
             .padding(.top, 50)
             .scrollIndicators(.hidden)
+        }
+        .alert("Are you sure you want to delete your account?", isPresented: $isDeleteAlertShown) {
+            Button {
+                authViewModel.deleteUserAccount { result in
+                    switch result {
+                    case .success():
+                        print("Account deleted successfully.")
+                        authViewModel.userSession = nil
+                        authViewModel.currentuser = nil
+                    case .failure(let error):
+                        print("ERROR DELELETING: \(error.localizedDescription)")
+                    }
+                }
+            } label: {
+                Text("Yes")
+            }
+            
+            Button {
+                isDeleteAlertShown.toggle()
+            } label: {
+                Text("No")
+            }
+        } message: {
+            Text("To access your reserves you will need to create a new account.")
+        }
+        .alert("Unable to send email", isPresented: $isAlertShown) {
+            Button {
+                isAlertShown.toggle()
+            } label: {
+                Text("Ok")
+            }
+        } message: {
+            Text("Your device does not have a mail client configured. Please configure your mail or contact support on our website.")
         }
     }
     

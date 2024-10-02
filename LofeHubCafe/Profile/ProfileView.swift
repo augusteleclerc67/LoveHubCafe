@@ -77,6 +77,7 @@ struct ProfileView: View {
                             if selectedImageData == nil {
                                 Circle()
                                     .frame(width: 250, height: 250)
+                                    .foregroundColor(.black)
                                 Image(systemName: "person")
                                     .foregroundStyle(.white)
                                     .font(.system(size: 92, weight: .regular))

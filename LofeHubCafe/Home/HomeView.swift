@@ -108,7 +108,7 @@ struct HomeView: View {
             .foregroundColor(.white)
         }
         .onAppear {
-            if let reservation = StorageManager.shared.reservations.first {
+            if let reservation = StorageManager.shared.reservations.last {
                 self.reservation = reservation
             }
         }
@@ -116,7 +116,7 @@ struct HomeView: View {
             ReservationView()
                 .environmentObject(authViewModel)
                 .onDisappear {
-                    if let reservation = StorageManager.shared.reservations.first {
+                    if let reservation = StorageManager.shared.reservations.last {
                         self.reservation = reservation
                     }
                 }

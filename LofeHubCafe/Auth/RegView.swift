@@ -36,6 +36,8 @@ struct RegistrationView: View {
                         .font(.system(size: 32, weight: .black))
                     
                     TextField("", text: $email, prompt: Text("E-mail").foregroundColor(.black.opacity(0.6)))
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                         .padding()
                         .padding(.vertical, 5)
                         .foregroundColor(.black)
@@ -49,6 +51,8 @@ struct RegistrationView: View {
                         .padding(.top, 50)
                     
                     TextField("", text: $name, prompt: Text("Name").foregroundColor(.black.opacity(0.6)))
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                         .padding()
                         .padding(.vertical, 5)
                         .foregroundColor(.black)
@@ -61,6 +65,8 @@ struct RegistrationView: View {
                         .padding(.horizontal)
                     
                     SecureField("", text: $password, prompt: Text("Password").foregroundColor(.black.opacity(0.6)))
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                         .padding()
                         .padding(.vertical, 5)
                         .foregroundColor(.black)
@@ -73,6 +79,8 @@ struct RegistrationView: View {
                         .padding(.horizontal)
                     
                     SecureField("", text: $confirm, prompt: Text("Confirm password").foregroundColor(.black.opacity(0.6)))
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                         .padding()
                         .padding(.vertical, 5)
                         .foregroundColor(.black)
