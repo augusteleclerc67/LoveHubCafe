@@ -101,6 +101,9 @@ struct RegistrationView: View {
                                 isAlerted.toggle()
                             }
                         } else {
+                            withAnimation {
+                                isAlerted.toggle()
+                            }
                             isNotificationShown.toggle()
                         }
                     } label: {
@@ -164,7 +167,7 @@ struct RegistrationView: View {
                             .shadow(color: .white.opacity(0.5), radius: 5)
                             .overlay {
                                 VStack {
-                                    Text("Incorrect data or a user with this email already exists.")
+                                    Text("Incorrect data or user with this email already exists.")
                                         .foregroundStyle(.black)
                                         .font(.system(size: 24, weight: .semibold, design: .monospaced))
                                         .multilineTextAlignment(.center)
@@ -199,6 +202,7 @@ struct RegistrationView: View {
                 }
             }
         }
+        
     }
 }
 
